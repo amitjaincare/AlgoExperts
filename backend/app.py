@@ -38,8 +38,12 @@ templates = Jinja2Templates(directory="templates")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # Development ke liye
-    allow_credentials=True,
+    allow_origins=[
+        "https://algoexperts-1.onrender.com",
+        "http://localhost:5500",
+        "http://127.0.0.1:5500"
+    ],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
