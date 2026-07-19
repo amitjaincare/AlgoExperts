@@ -1,3 +1,6 @@
+import os
+import requests
+
 from fastapi import FastAPI, Depends, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -9,6 +12,21 @@ import models
 import schemas
 import crud
 from fastapi.middleware.cors import CORSMiddleware
+
+TELEGRAM_BOT_TOKEN = "YAHAN_APNA_NAYA_TOKEN_DALNA"
+TELEGRAM_CHAT_ID = "1340400281"
+
+def send_telegram_message(text):
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+
+    requests.post(
+        url,
+        json={
+            "chat_id": TELEGRAM_CHAT_ID,
+            "text": text
+        },
+        timeout=10
+    )
 
 Base.metadata.create_all(bind=engine)
 
@@ -34,7 +52,25 @@ def home():
 
 @app.post("/lead")
 def create_lead(lead: schemas.LeadCreate, db: Session = Depends(get_db)):
-    return crud.create_lead(db, lead)
+    saved_lead = crud.create_lead(db, lead)
+
+    message = f"""
+🟢 New Lead Received
+
+👤 Name: {lead.name}
+📞 Mobile: {lead.phone}
+📧 Email: {lead.email}
+
+💬 Message:
+{lead.message}
+"""
+
+    try:
+        send_telegram_message(message)
+    except Exception as e:
+        print("Telegram Error:", e)
+
+    return saved_lead
 
 
 @app.get("/leads")
