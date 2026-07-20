@@ -1,4 +1,4 @@
-﻿const API_URL = "https://algoexperts-1.onrender.com";
+﻿const API_URL = "https://algoexperts-2.onrender.com";
 
 
 const form = document.getElementById("leadForm");
