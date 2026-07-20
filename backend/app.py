@@ -77,7 +77,7 @@ def create_lead(lead: schemas.LeadCreate, db: Session = Depends(get_db)):
 🟢 New Lead Received
 
 👤 Name: {lead.name}
-📞 Mobile: {lead.phone}
+📞 Mobile: {lead.mobile}
 📧 Email: {lead.email}
 
 💬 Message:
