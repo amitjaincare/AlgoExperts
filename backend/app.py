@@ -16,8 +16,8 @@ import schemas
 import crud
 from fastapi.middleware.cors import CORSMiddleware
 
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+TELEGRAM_BOT_TOKEN = os.getenv("CVzA9QRtn0AkjytlGrUfdaL18kLbo")
+TELEGRAM_CHAT_ID = os.getenv("1340400281")
 
 def send_telegram_message(text):
 

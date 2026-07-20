@@ -13,7 +13,7 @@ form.addEventListener("submit", async function (e) {
 
         name: document.getElementById("name").value,
 
-        phone: document.getElementById("mobile").value,
+        mobile: document.getElementById("mobile").value,
 
         email: document.getElementById("email").value,
 
@@ -30,7 +30,7 @@ form.addEventListener("submit", async function (e) {
 
     // Mobile validation
 
-    if (data.phone.length !== 10) {
+    if (data.mobile.length !== 10) {
 
         alert("Enter valid mobile number");
 
