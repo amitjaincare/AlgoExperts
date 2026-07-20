@@ -20,9 +20,18 @@ TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 def send_telegram_message(text):
+
+    if not TELEGRAM_BOT_TOKEN:
+        print("❌ Telegram Bot Token missing")
+        return
+
+    if not TELEGRAM_CHAT_ID:
+        print("❌ Telegram Chat ID missing")
+        return
+
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
 
-    requests.post(
+    response = requests.post(
         url,
         json={
             "chat_id": TELEGRAM_CHAT_ID,
@@ -30,6 +39,9 @@ def send_telegram_message(text):
         },
         timeout=10
     )
+
+    print("Telegram Response:")
+    print(response.text)
 
 Base.metadata.create_all(bind=engine)
 
