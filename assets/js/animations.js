@@ -1,4 +1,4 @@
-const animatedElements = document.querySelectorAll('.section-intro, .service-card, .process-list li, .assurance-item, .benefits-heading, .benefit-card, .contact-copy, .form-card');
+const animatedElements = document.querySelectorAll('.section-intro, .service-card, .process-list li, .assurance-item, .benefits-heading, .benefit-card, .business-intro, .business-panel, .business-card, .contact-copy, .form-card');
 
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver(entries => {
